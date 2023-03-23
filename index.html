@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>{$c['web_title']}</title>
+    <meta name="keywords" content="{$c['web_keywords']}">
+    <meta name="description" content="{$c['web_description']}">
+    <style>
+      html,body {padding: 0;margin: 0;cursor: url(./static/img/cursora.ico),auto;height: 100vh;overflow: hidden;}
+      *{box-sizing: border-box;}
+      a{text-decoration: none;}
+      .flex{display: flex;align-items: center;}
+      canvas {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+      #app {
+        position: relative;
+        z-index: 2;
+        margin: 0 auto;
+      }
+      .content{justify-content: space-between;position: fixed;top:45%;left:50%;transform: translate(-50%,-50%);width: 72%;max-width: 1600px;}
+      .c1{width: 30%;position: relative;background: rgba(100,100,100,.2);border-radius: 20px;padding: 20px;transition:all .3s;color: #fff;}
+      .c1::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        backdrop-filter: blur(5px);
+        z-index: -1;
+      }
+      .c1:hover{background: rgba(100,100,100,.7);}
+      .c2{width: 100%;text-align: right;margin-top: -158px;}
+      .c2 img{width:260px;margin-right: -30px;}
+      .c4{letter-spacing: 1px;text-shadow: 2px 2px 5px #555;}
+      .c5{margin: 20px auto;height: 90px;line-height: 30px;text-shadow: 1px 1px 3px #555;}
+      .c6 img{width: 100%;border-radius: 20px;display: block;}
+
+      .footer{position: fixed;left: 50vw;bottom:30px;transform: translateX(-50vw);width: 100vw;}
+      .footer a{color: #222;}
+      .footer a:hover{color: #214c7b;}
+      .c10{margin-right: 50px;}
+      .c11:hover{color: #214c7b;cursor: pointer;}
+      .c13{justify-content: center;margin-bottom: 20px;color: #555;flex-wrap: wrap;line-height: 25px;}
+      .c13 a{margin-left: 20px;color: #555;}
+      .c14{justify-content: center;font-size: 20px;font-weight: bold;}
+
+      .layer{position: fixed;top: 0;right: 0;bottom: 0;left: 0;background: rgba(0,0,0,.85);display: none;z-index: 9;cursor: pointer;}
+      .c20{max-width: 1000px;width: 100%;height: 80%;position: fixed;top:50%;left:50%;transform: translate(-50%,-50%);border-radius: 20px;padding: 20px;color: #fff;overflow: hidden;justify-content: space-between;}
+      .c21 img{width: 230px;border-radius: 10px;overflow: hidden;}
+      .c22{font-size: 20px;text-align: center;line-height: 40px;font-weight: bold;margin-top: 20px;}
+
+      @media screen and (max-width:1700px) {
+        .content{width: 80%;}
+      }
+      @media screen and (max-width:1500px) {
+        .content{width: 85%;}
+        .c1{width: 31%;}
+      }
+      @media screen and (max-width:1300px) {
+        .content{width: 90%;}
+      }
+      @media screen and (max-width:1200px) {
+        .content{width: 95%;margin: 0 auto;}
+        .c1{padding: 15px;width: 32%;}
+        .c4{font-size: 18px;}
+      }
+      @media screen and (max-width:960px) {
+        .content{position: static;transform: translate(0,0);flex-wrap: wrap;height: 85vh;overflow: auto;width: 100%;padding: 0 5% 30px;}
+        .c1{width: 100%;max-width: 500px;margin: 150px auto 0;}
+        .c5{height: auto;}
+        .footer{position: static;transform: translate(0,0);padding: 30px 0;}
+        .c13{font-size: 14px;margin-bottom: 10px;}
+        .c13 a{margin-left: 15px;}
+        .c14{font-size: 14px;}
+        .c20{flex-wrap: wrap;height: 100%;}
+        .c21{width: 100%;text-align: center;}
+        .c21 img{width: 46%;}
+        .c22{font-size: 14px;line-height: 25px;margin: 5px auto 20px;}
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+
+      <div class="flex content">
+        <a href="http://vue3.88an.top" class="c1" target="_blank">
+          <div class="c2"><img src="./static/img/svg (13).svg" alt="陈广安个人网站" /></div>
+          <div class="c3">
+            <h2 class="c4">gitee开源 vue3管理框架</h2>
+            <div class="c5">
+              vue3.2+ts+elementPlus+pinia<br/>
+              后台管理框架<br/>
+              没有过度封装组件,易上手
+            </div>
+            <div class="c6">
+              <img src="./static/img/14.jpg" alt="开源vue3后台管理框架">
+            </div>
+          </div>
+        </a>
+  
+        <a href="http://site.88an.top" class="c1" target="_blank">
+          <div class="c2"><img src="./static/img/svg (13).svg" alt="陈广安个人网站" /></div>
+          <div class="c3">
+            <h2 class="c4">gitee开源 PHP企业官网</h2>
+            <div class="c5">
+              前端：vue3.2+ts+elementPlus+pinia<br/>
+              后端：Thinkphp6<br/>
+              每个页面可以独立配置内容、SEO信息
+            </div>
+            <div class="c6">
+              <img src="./static/img/15.jpg" alt="开源PHP企业官网">
+            </div>
+          </div>
+        </a>
+  
+        <a href="{:url('index/index/home')}" class="c1" target="_blank">
+          <div class="c2"><img src="./static/img/svg (13).svg" alt="陈广安个人网站" /></div>
+          <div class="c3">
+            <h2 class="c4">陈广安个人网站</h2>
+            <div class="c5">
+              自娱自乐，开发笔记...<br/>
+              个人工作室，承接项目开发<br/>
+              费用低至9块9起
+            </div>
+            <div class="c6">
+              <img src="./static/img/16.jpg" alt="陈广安个人网站">
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="footer">
+        <div class="c12">
+          <div class="flex c13">
+            链接：<a href="https://gitee.com/chenguangan/vue3.2.ts.vite4" target="_blank">开源vue3管理框架</a>
+            <a href="https://gitee.com/chenguangan/site-tp6-vue3" target="_blank">开源PHP企业官网</a>
+            <a href="{:url('index/page/im_group')}" target="_blank">socket聊天室</a>
+            <a href="{:url('index/index/to?page=wxeditor&controller=page')}" target="_blank">模板富文本编辑器</a>
+          </div>
+          <div class="flex c14">
+            <div class="c10">
+              <a href="https://beian.miit.gov.cn/" target="_blank">冀ICP备16027619号</a>
+            </div>
+            <div class="c11">联系我</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="c20 flex">
+        <div class="c21">
+          <img src="./static/img/wx_me_ewm.png" alt="">
+          <div class="c22">安爷小助手<br/>个人微信小程序</div>
+        </div>
+        <div class="c21">
+          <img src="./static/img/12752dfd5c5d0db03be0e26bca327042.png" alt="">
+          <div class="c22">未上架市场的<br/>个人APP下载</div>
+        </div>
+        <div class="c21">
+          <img src="./static/img/ewm_weixin.jpg" alt="">
+          <div class="c22">扫一扫，加微信<br/>电话：13128138787</div>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="./static/plug_in/canvas_bg/ThreeWebGL.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./static/plug_in/canvas_bg/ThreeExtras.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./static/plug_in/canvas_bg/Detector.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./static/plug_in/cursor.js"
+    ></script>
+    <script>
+    </script>
+    <script type="text/javascript" src="./static/plug_in/jquery-1.9.1.min.js"></script>
+    <script>
+      $(".c11").click(function(){
+        $(".layer").show();
+      })
+      $(".layer").click(function(){
+        $(this).hide();
+      })
+    </script>
+  </body>
+</html>
